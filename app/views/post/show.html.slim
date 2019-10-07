@@ -1,0 +1,19 @@
+.container.text-center
+  .row
+    .content.col-8
+      p
+      h1
+        = @post.title
+      #editSection
+      .hide
+        = @post.content
+      br
+    = render partial: 'layouts/right_panels'
+
+javascript:
+   const content = $('.hide').text();
+   new window.Viewer({
+      el: document.querySelector('#editSection'),
+      height: '500px',
+      initialValue: content
+   });

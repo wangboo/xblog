@@ -4,12 +4,12 @@
 .card.card-primary
   .card-header.with-border
     h3.card-title
-      | Edit Account
+      | 编辑账号
   = simple_form_for current_admin, url: admin_account_path do |f|
     .card-body
-      = f.input :name, label: 'Administrator Name'
-      = f.input :current_password, label: 'Current Password', required: true
-      = f.input :password, label: 'New Password( Blank if not modify )'
-      = f.input :password_confirmation, label: 'Confirm New Password'
+      = f.input :name, label: '管理员账号'
+      = f.input :current_password, label: '当前密码', required: true
+      = f.input :password, label: '新密码'
+      = f.input :password_confirmation, label: '确认新密码'
     .card-footer
-      = f.submit 'Update Account', class: 'btn btn-primary'
+      = f.submit '更新账号', class: 'btn btn-primary'

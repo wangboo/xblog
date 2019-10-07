@@ -1,3 +1,14 @@
 @import 'bootstrap_custom';
 
 @import 'home';
+
+.hide {
+  display: none;
+}
+.right {
+  border-left: 1px solid lightgray;
+  min-height: 200px;
+  .keep-space {
+    margin-top: 50px;
+  }
+}

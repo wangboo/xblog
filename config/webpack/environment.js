@@ -15,7 +15,6 @@ environment.loaders.append('expose', {
     use: [{
         loader: 'expose-loader',
         options: '$'
-    }, {
         loader: 'expose-loader',
         options: 'jQuery',
     }]

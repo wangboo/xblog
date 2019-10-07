@@ -28,7 +28,7 @@ group :test do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'pg', '>= 1.1'
+gem 'mysql2'
 gem 'figaro'
 gem 'simple_form', '~> 4.1'
 gem 'slim-rails'

@@ -1,3 +1,4 @@
+
 (function() {
   window.App = window.App || {}
   window.App.adminSidebar = {

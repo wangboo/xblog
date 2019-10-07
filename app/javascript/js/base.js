@@ -1,6 +1,7 @@
 // base dependency library, it should be only shared by `admin.js` and `application.js`.
 import 'jquery'
 import 'bootstrap/dist/js/bootstrap'
+// import 'tui-editor'
 
 import RailsUjs from '@rails/ujs'
 import Turbolinks from 'turbolinks'

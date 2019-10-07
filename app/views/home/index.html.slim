@@ -1,15 +1,27 @@
 .container.text-center
-  p
-  h1 Hello World
-  hr
-  h3 You are roading on Rails...
-  br
-  br
-  br
-  br
-  p.text-muted
-    ' Built with
-    span dao42/rails-template
-    | !
+  .row
+    .content.col-8
+      .jumbotron
+        h1.display-4
+          | 王博的技术博客
+        p.lead
+          | 这里有关于java、scala、ruby、elixir、golang语言的技术文章
+          br
+          | 这里有spring、akka、flink、ruby on rails的学习笔记
+          br
+          | 目前正在从事数字化自动化营销、数据流实时处理、分布式相关工作
+          br
+          | 本人曾从事银行支付系统、游戏、电商、数字化营销相关工作
+          hr.my-4
+          a href='https://github.com/wangboo' target='_blank' 我的github
+    = render partial: 'layouts/right_panels'
 
-  = link_to 'About Page', page_path('about')
+
+
+javascript:
+    const content = $('.hide').text();
+    new window.Viewer({
+       el: document.querySelector('#editSection'),
+       height: '500px',
+       initialValue: content
+    });

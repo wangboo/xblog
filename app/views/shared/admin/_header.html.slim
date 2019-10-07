@@ -16,6 +16,6 @@ nav.main-header.navbar.navbar-expand.navbar-white.navbar-light.border-bottom
           = current_admin.name
       ul.dropdown-menu.dropdown-menu-right
         li.user-header
-          = link_to 'Account Setting', edit_admin_account_path, class: 'dropdown-item'
+          = link_to '账号设置', edit_admin_account_path, class: 'dropdown-item'
           .dropdown-divider
-          = link_to 'Logout', admin_logout_path, method: :delete, class: 'dropdown-item'
+          = link_to '退出', admin_logout_path, method: :delete, class: 'dropdown-item'

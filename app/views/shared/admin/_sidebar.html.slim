@@ -3,7 +3,7 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
   /! Brand Logo
   a.brand-link href=admin_root_path
     = image_pack_tag 'logo.png', class: 'brand-image img-circle elevation-3'
-    span.brand-text.font-weight-light Dashboard
+    span.brand-text.font-weight-light 控制台
   /! Sidebar
   .sidebar
     /! Sidebar Menu
@@ -12,8 +12,8 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
         li.nav-item
           = link_to admin_root_path, class: "nav-link #{admin_active_for(admin_root_path, current_path)}" do
             i.nav-icon.fas.fa-tachometer-alt
-            span Dashboard
+            span 驾驶舱
         li.nav-item
           = link_to '#', class: "nav-link" do
             i.nav-icon.fas.fa-th
-            span Your menu
+            span 菜单
