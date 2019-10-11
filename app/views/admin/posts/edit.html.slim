@@ -1,0 +1,32 @@
+= simple_form_for @post, url: admin_post_path(@post), html: {onSubmit: 'fulfillContent()'} do |f|
+  = f.input :id, as: :hidden
+  = f.input :title, label: '标题'
+  = f.input :category_id, collection: Category.all_available_col, as: :select
+  input type="hidden" name="post[content]" id="content"
+  input type="hidden" name="post[html]" id="html"
+  div id="editorSection"
+  .text-center
+    = f.button :submit, '提交', class: "btn btn-primary submit"
+
+javascript:
+  var editor;
+  window.addEventListener('turbolinks:load', function() {
+     $.get("/admin/posts/#{{@post.id}}.json", function(resp) {
+        editor = new window.Editor({
+           el: document.querySelector('#editorSection'),
+           initialEditType: 'markdown',
+           previewStyle: 'vertical',
+           height: '800px',
+           initialValue: resp.content
+        });
+     });
+     console.log('loadContent');
+  });
+
+  function fulfillContent() {
+     const content = editor.getMarkdown();
+     window.$("#content").val(content);
+     const html = editor.getHtml();
+     window.$("#html").val(html);
+     return true;
+  }

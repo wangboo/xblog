@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy', as: :logout
     resource :account, only: [:edit, :update]
+    resources :posts do
+      get 'publish_down', to: 'posts#publish_down'
+      get 'publish_up', to: 'posts#publish_up'
+    end
 
     root to: 'dashboard#index'
   end
@@ -28,5 +32,7 @@ Rails.application.routes.draw do
 
   get '/category/:id', to: 'category#show', as: :show_category
   get '/post/:id', to: 'post#show', as: :show_post
+
+  resources :spide_tasks
 
 end

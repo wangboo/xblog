@@ -14,7 +14,7 @@ environment.loaders.append('expose', {
     test: require.resolve('jquery'),
     use: [{
         loader: 'expose-loader',
-        options: '$'
+        options: '$',
         loader: 'expose-loader',
         options: 'jQuery',
     }]

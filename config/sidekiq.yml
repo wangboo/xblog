@@ -1,7 +1,10 @@
+:verbose: true
 :concurrency: 5
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: ./log/sidekiq.log # 输出的日志地址
+:timeout: 30
+:daemon: true
 :queues:
-  - critical
   - default
-  - low
 production:
   :concurrency: 25

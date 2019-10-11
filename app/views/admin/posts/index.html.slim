@@ -1,0 +1,24 @@
+table.table.table-striped
+  thead
+    tr
+      th scope="col" | #
+      th scope="col" 类别
+      th scope="col" 标题
+      th scope="col" 状态
+      th scope="col" 上次更新时间
+      th scope="col" 操作
+  tbody
+    - Post.all.each_with_index do |p, index|
+      tr
+        th scope="row" = index+1
+        th = p.category.name
+        th = p.short_title
+        th = p.publish_state
+        th = p.updated_at
+        th
+          = link_to '编辑', edit_admin_post_path(p), class: 'btn btn-default'
+          - if p.publish
+            = link_to '下架', admin_post_publish_down_path(p), class: 'btn btn-warning'
+          - else
+            = link_to '发布', admin_post_publish_up_path(p), class: 'btn btn-primary'
+          = link_to '删除', admin_post_path(p), class: 'btn btn-danger', method: 'delete'

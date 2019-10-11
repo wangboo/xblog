@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_004724) do
+ActiveRecord::Schema.define(version: 2019_10_11_111758) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,30 @@ ActiveRecord::Schema.define(version: 2019_10_05_004724) do
     t.integer "visit_count", default: 0
     t.integer "category_id", null: false
     t.boolean "publish", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "html", default: "''"
+  end
+
+  create_table "spide_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "selector", default: "", comment: "css选择器"
+    t.string "op_type", default: "click", comment: "操作类型, click 点击，submit 提交"
+    t.string "value", default: "", comment: "默认值"
+    t.string "description", default: "", comment: "备注"
+    t.integer "step", default: 0, comment: "第几步"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "spide_tasks_id"
+    t.index ["spide_tasks_id"], name: "index_spide_steps_on_spide_tasks_id"
+  end
+
+  create_table "spide_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "user_id", null: false, comment: "用户id"
+    t.string "flag", null: false, comment: "网站缩写，用来区分网站"
+    t.boolean "use_ip_pool", default: false, comment: "是否使用ip池"
+    t.integer "ip_pool_size", default: 1000, comment: "ip池数量"
+    t.integer "state", default: 0, comment: "发布状态，0编辑中，1已发布，2运行中，3运行完毕"
+    t.string "description", default: "", comment: "备注"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
