@@ -51,3 +51,5 @@ yarn-debug.log*
 .DS_Store
 
 .idea
+/yarn.lock
+/Gemfile.lock

@@ -5,14 +5,6 @@ The source code of xblog
 
 Install dependencies:
 
-* postgresql
-
-    ```bash
-    $ brew install postgresql
-    ```
-
-    Ensure you have already initialized a user with username: `postgres` and password: `postgres`( e.g. using `$ createuser -d postgres` command creating one )
-
 * rails 6
 
     Using `rbenv`, update `ruby` up to 2.5 or higher, and install `rails 6.0.0`
@@ -41,6 +33,14 @@ $ ./bin/setup
 $ ./bin/webpack-dev-server
 # open new terminal tab
 $ rails s
+```
+
+in production mode
+packs编译后文件默认存放在 /usr/share/xblog/packs/
+
+```bash
+make compile
+make run
 ```
 
 ## Admin dashboard info
