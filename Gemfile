@@ -33,7 +33,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'mysql2'
 gem 'figaro'
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.0'
 gem 'slim-rails'
 gem 'high_voltage', '~> 3.1'
 gem 'browser_warrior', '>= 0.11.0'
