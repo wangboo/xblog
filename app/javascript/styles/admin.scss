@@ -10,16 +10,29 @@
   }
 }
 
-.admin-posts-index-page {
-  table {
-    a, button {
-      margin: 0 5px;
-    }
+table {
+  a, button {
+    margin: 0 5px;
   }
+}
+
+.admin-posts-index-page {
+
 }
 
 .admin-posts-edit-page {
   .submit {
     margin: 8px 0;
+  }
+}
+
+.ops-dev {
+  margin: 10px 0;
+}
+
+.admin-categories-edit-page {
+  .form-dev {
+    width: 300px;
+    margin-left: 10px;
   }
 }

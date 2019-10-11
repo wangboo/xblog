@@ -1,0 +1,23 @@
+.ops-dev
+  = link_to '新建分类', new_admin_category_path, class: 'btn btn-info'
+
+table.table.table-striped
+  thead
+    tr
+      th scope="col" ID
+      th scope="col" 名称
+      th scope="col" 排序值
+      th scope="col" 创建时间
+      th scope="col" 更新时间
+      th scope="col" 操作
+  tbody
+    - Category.all_with_sort.each do |c|
+      tr
+        th scope="row" = c.id
+        th = c.name
+        th = c.zorder
+        th = c.created_at
+        th = c.updated_at
+        th
+          = link_to '编辑', edit_admin_category_path(c), class: 'btn btn-default'
+          / = link_to '删除', admin_post_path(c), class: 'btn btn-danger', method: 'delete'

@@ -1,0 +1,6 @@
+.form-dev
+  = simple_form_for @category, url: admin_category_path(@category.id) do |f|
+    = f.input :name, label: '名称'
+    = f.input :zorder, label: '排序值', input_html: {type: 'number'}
+    .text-center
+      = f.button :submit, '确定', class: "btn btn-primary"

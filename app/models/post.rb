@@ -2,6 +2,8 @@ class Post < ApplicationRecord
 
   belongs_to :category
 
+  scope :top_hots, -> { where(publish: true).limit(5) }
+
   def short_title
     if title.size < 18
       title

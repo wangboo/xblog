@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get 'publish_down', to: 'posts#publish_down'
       get 'publish_up', to: 'posts#publish_up'
     end
+    resources :categories
 
     root to: 'dashboard#index'
   end

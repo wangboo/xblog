@@ -1,7 +1,7 @@
 = simple_form_for @post, url: admin_post_path(@post), html: {onSubmit: 'fulfillContent()'} do |f|
   = f.input :id, as: :hidden
   = f.input :title, label: '标题'
-  = f.input :category_id, collection: Category.all_available_col, as: :select
+  = f.input :category_id, collection: Category.all_with_sort_cols, as: :select
   input type="hidden" name="post[content]" id="content"
   input type="hidden" name="post[html]" id="html"
   div id="editorSection"

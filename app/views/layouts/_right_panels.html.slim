@@ -1,16 +1,16 @@
-= cache :right_panels
-  .right.col-4
+.right.col-4
+  = cache :categories_panels, skip_digest: true
     .card
       .card-header
         | 文章分类
       ul.list-group.list-group-flush
-        - for c in Category.all_available
+        - for c in Category.all_with_sort
           li.list-group-item: a href=show_category_path(c) = c.name
 
-
+  = cache :hot_posts_panels, skip_digest: true, expires_in: 1.hour
     .card.keep-space
       .card-header
         | 热门文章
       ul.list-group.list-group-flush
-        - for p in Post.all.limit(5)
+        - for p in Post.top_hots
           li.list-group-item: a href=show_post_path(p) = p.short_title
