@@ -1,0 +1,37 @@
+.ops-dev
+  = link_to '新增任务', new_spide_task_path, class: 'btn btn-info'
+.row
+  table.table.table-bordered
+    thread
+      tr
+        th scope="col" #
+        th scope="col" 用户
+        th scope="col" flag
+        th scope="col" 状态
+        th scope="col" 使用ip池
+        th scope="col" ip池数量
+        th scope="col" 备注
+        th scope="col" 操作
+    tbody
+      - SpideTask.all.each_with_index do |s, index|
+        tr
+          th scope="row" = index
+          td = "admin"
+          td = s.flag
+          td = s.state_str
+          td
+            - if s.use_ip_pool
+              | 是
+            - else
+              | 否
+          td = s.ip_pool_size
+          td = s.short_desc
+          td
+            = link_to '编辑', edit_spide_task_path(s), class: "btn-sm btn-info"
+            - if s.state == 0
+              = link_to '发布', edit_spide_task_path(s), class: "btn-sm btn-success"
+            - if s.state == 1
+              = link_to '运行', edit_spide_task_path(s), class: "btn-sm btn-primary"
+            - if s.state == 2
+              = link_to '暂停', edit_spide_task_path(s), class: "btn-sm btn-warning"
+            = link_to '删除', spide_task_path(s), class: "btn-sm btn-danger", method: :delete

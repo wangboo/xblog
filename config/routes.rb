@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   get '/category/:id', to: 'category#show', as: :show_category
   get '/post/:id', to: 'post#show', as: :show_post
 
-  resources :spide_tasks
+  resources :spide_tasks do
+    resources :spide_steps, :spide_limits
+  end
 
 end

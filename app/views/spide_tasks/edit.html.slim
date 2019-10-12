@@ -1,0 +1,53 @@
+.new-form.text-center
+  .title
+    .main 创建一个爬虫任务(暂不支持IP池)
+  = simple_form_for @s, wrapper: :horizontal_form do |f|
+    = f.input :flag, placeholder: '用来表示唯一，例如gushiwen', label: '网站缩写'
+    = f.input :use_ip_pool, wrapper: :horizontal_multi_select, label: '是否使用ip池', collection: [%w(是 true), %w(否 false)], selected: 'false'
+    = f.input :ip_pool_size, wrapper_html: {id: :ip_pool_size_group}, label: 'ip池数量', type: 'number', input_html: {step: 1000}
+    = f.input :description, as: :text
+    = f.button :submit, "提交", class: "btn-primary"
+  .break-line
+
+  .title
+    .main
+      | 创建爬虫规则
+      = link_to "新增规则", new_spide_task_spide_step_path(@s), class: "btn-sm btn-primary", id: 'new-task'
+    .notice
+      | 注意：爬虫按照步骤规定的顺序，从小到大严格的执行！
+  - @s.spide_steps_with_sort.each do |step|
+    .card
+      .card-header = "爬取规则：" + step.short_desc
+      .card-body
+        = simple_form_for step, url: spide_task_spide_step_path(@s, step), wrapper: :horizontal_form do |f|
+          = f.input :selector, label: '选择器'
+          = f.input :step, label: '步骤', input_html: {type: 'number'}
+          = f.input :op_type, label: '操作', collection: [%w{点击 click}, %w{提交 submit}]
+          = f.input :value, label: '默认值', input_html: {placeholder: '目前不用配置'}
+          = f.input :description, label: '描述', as: :text
+          = f.button :submit, '修改', class: 'btn btn-primary'
+          = link_to '修改', spide_task_spide_step_path(@s, step), class: 'btn btn-info'
+          = link_to '删除', spide_task_spide_step_path(@s, step), method: :delete, class: 'btn btn-danger'
+
+  .title
+    .main
+      | 创建限流规则
+      = link_to "新建限流", new_spide_task_spide_limit_path(@s), class: 'btn-sm btn-primary'
+  - @s.spide_limits.each do |limit|
+    .card
+      .card-header = "限流规则：" + limit.website
+      .card-body
+        = simple_form_for limit, url: spide_task_spide_limit_path(@s, limit), wrapper: :horizontal_form do |f|
+          = f.input :website, label: '网站域名'
+          = f.input :rate_limit, label: '爬取速度/秒', input_html: {placeholder: "如：0.5，表示一秒钟可以爬取0.5次"}
+          = f.input :enabled, label: '是否启用', as: :boolean
+          = f.input :description, label: '描述', as: :text
+          = link_to '修改', spide_task_spide_limit_path(@s, limit), class: 'btn btn-info'
+          = link_to '删除', spide_task_spide_limit_path(@s, limit), method: :delete, class: 'btn btn-danger'
+
+
+javascript:
+  $("#ip_pool_size_group").hide();
+  window.addEventListener('turbolinks:load', function() {
+     window.spide.watchSelect();
+  });

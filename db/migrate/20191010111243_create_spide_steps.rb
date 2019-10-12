@@ -8,7 +8,7 @@ class CreateSpideSteps < ActiveRecord::Migration[6.0]
       t.integer :step, default: 0, comment: '第几步'
       t.timestamps
 
-      t.belongs_to :spide_tasks
+      t.belongs_to :spide_task
     end
   end
 end

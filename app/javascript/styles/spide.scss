@@ -1,13 +1,36 @@
 .spide-tasks-edit-page {
   .new-form {
+    width: 600px;
     margin-top: 20px;
+    .break-line {
+      margin: 20px 0;
+      background-color: darkgray;
+      height: 1px;
+    }
     .title {
       text-align: left;
-      font-size: 1.4rem;
       margin: 8px 0;
+      .main {
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+      }
+      .notice {
+        font-size: 0.9rem;
+        line-height: 2rem;
+        background-color: #DADADA;
+      }
     }
     form {
       width: 500px;
     }
   }
+
+  #new-task {
+    margin-left: 15px;
+  }
+
+  .card {
+    margin: 20px 0;
+  }
+
 }

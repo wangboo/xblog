@@ -1,9 +1,10 @@
-= cache :navbar
-  nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    a.navbar-brand href='/' wangboo's blog
-    .collapse.navbar-collapse
-      ul.navbar-nav.mr-auto
-        li.nav-item.active
-          a.nav-link href='/' 首页
-        li.nav-item
-          a.nav-link href='/posts' 文章
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand href='/' wangboo's blog
+  .collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link href='/' 首页
+      li.nav-item
+        a.nav-link href='/posts' 文章
+      li.nav-item
+        = link_to '自动化爬虫', spide_tasks_path, class: 'nav-link'

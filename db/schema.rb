@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_11_111758) do
+ActiveRecord::Schema.define(version: 2019_10_12_031524) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 2019_10_11_111758) do
     t.text "html", default: "''"
   end
 
+  create_table "spide_limits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "website", limit: 32, default: ""
+    t.float "rate_limit", default: 0.5
+    t.boolean "enabled", default: false
+    t.string "description", limit: 512
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "spide_task_id"
+    t.index ["spide_task_id"], name: "index_spide_limits_on_spide_task_id"
+  end
+
   create_table "spide_steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "selector", default: "", comment: "css选择器"
     t.string "op_type", default: "click", comment: "操作类型, click 点击，submit 提交"
@@ -67,8 +78,10 @@ ActiveRecord::Schema.define(version: 2019_10_11_111758) do
     t.integer "step", default: 0, comment: "第几步"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "spide_tasks_id"
-    t.index ["spide_tasks_id"], name: "index_spide_steps_on_spide_tasks_id"
+    t.bigint "spide_task_id"
+    t.string "behaviour", limit: 32
+    t.string "url", limit: 128
+    t.index ["spide_task_id"], name: "index_spide_steps_on_spide_task_id"
   end
 
   create_table "spide_tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
