@@ -44,7 +44,7 @@ class Admin::PostsController < Admin::BaseController
     logger.info "html: #{data[:html]}"
     @post = Post.find(data[:id])
     @post.update!(data)
-    redirect_to admin_posts_path
+    redirect_to edit_admin_post_path(@post)
   end
 
   def remove_cache
