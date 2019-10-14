@@ -1,6 +1,14 @@
-class Post < ApplicationRecord
+class Post
 
+  include Mongoid::Document
+  include Mongoid::Timestamps
   belongs_to :category
+
+  field :title
+  field :content
+  field :visit_count, type: Integer, default: 0
+  field :publish, type: Boolean, default: false
+  field :html, default: ''
 
   scope :top_hots, -> { where(publish: true).limit(5) }
 

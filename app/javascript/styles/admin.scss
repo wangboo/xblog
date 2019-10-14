@@ -10,6 +10,11 @@
   }
 }
 
+.content {
+  padding-left: 25px!important;
+  padding-right: 25px!important;
+}
+
 table {
   a, button {
     margin: 0 5px;
@@ -34,5 +39,17 @@ table {
   .form-dev {
     width: 300px;
     margin-left: 10px;
+  }
+}
+
+.admin-images-index-page {
+  .card-images {
+    margin: 20px 0;
+  }
+  .image-item {
+    width: 100%;
+  }
+  .btn-copy-link {
+    margin-right: 10px;
   }
 }

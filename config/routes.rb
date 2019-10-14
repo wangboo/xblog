@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get 'publish_down', to: 'posts#publish_down'
       get 'publish_up', to: 'posts#publish_up'
     end
-    resources :categories
+    resources :categories, :images
 
     root to: 'dashboard#index'
   end
@@ -36,6 +36,11 @@ Rails.application.routes.draw do
 
   resources :spide_tasks do
     resources :spide_steps, :spide_limits
+  end
+
+  puts "routes env #{Rails.env}"
+  if Rails.env.to_s == "development"
+    get '/fdfs/:id0/:id1/:file', to: 'proxy#delegate'
   end
 
 end

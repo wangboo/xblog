@@ -1,7 +1,15 @@
-class SpideTask < ApplicationRecord
+class SpideTask
 
-  has_many :spide_steps
-  has_many :spide_limits
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  field :user_id, type: Integer, default: 1
+  field :flag, type: String, default: ''
+  field :use_ip_pool, type: Boolean, default: false
+  field :ip_pool_size, type: Integer, default: 1000
+  # 发布状态，0编辑中，1已发布，2运行中，3运行完毕
+  field :state, type: Integer, default: 0
+  field :description, default: ''
 
   def spide_steps_with_sort
     spide_steps.order('step')

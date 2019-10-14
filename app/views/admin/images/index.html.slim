@@ -1,0 +1,27 @@
+.row
+  .col-4
+    .card.card-new-image
+      .card-header 上传图片素材
+      .card-body
+        = simple_form_for Image.new, url: admin_images_path, wrapper: :inline_form do |f|
+          = f.input :file, as: :file, label: '上传图片'
+          = f.button :submit, '上传', class: 'btn-sm btn-primary'
+
+.images-box
+.card.card-images
+  .card-header 素材集合, 点击图片复制链接
+  .card-body
+    .row
+      - Image.all.each do |image|
+        .col-3.image-dev
+          = image_tag image.uri, class: "image-item", id: "image_#{image.id}", data: {'clipboard-text' => image.uri, 'clipboard-target' => "#image_#{image.id}"}
+          .ops-dev.text-center
+            = button_tag '复制链接', class: 'btn btn-sm btn-success btn-copy-link', data: {'clipboard-target' => "#image_#{image.id}"}
+            = link_to '删除', admin_image_path(image), method: :delete, class: "btn btn-sm btn-danger", data: {confirm: '是否删除'}
+
+javascript:
+  window.$(function() {
+    window.admin.listenCopyLink();
+  });
+
+

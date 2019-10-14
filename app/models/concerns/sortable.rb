@@ -3,7 +3,18 @@ module Sortable
 
   included do |base|
     scope :all_with_sort, -> { order("zorder desc") }
-    scope :all_with_sort_cols, -> { select("name, id").order("zorder desc").map { |c| [c.name, c.id] } }
+  end
+
+  def name_id_pair
+    [name, id.to_s]
+  end
+
+  module ClassMethods
+
+    def all_with_sort_cols
+      all_with_sort.map(&:name_id_pair)
+    end
+
   end
 
 end

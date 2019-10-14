@@ -10,6 +10,7 @@ class Admin::BaseController < ActionController::Base
   private
 
   def authenticate_admin!
+    logger.info "authenticate_admin!"
     if current_admin.blank?
       redirect_to admin_login_path
       return
@@ -26,7 +27,7 @@ class Admin::BaseController < ActionController::Base
   end
 
   def admin_sign_in(admin)
-    session[:current_admin_id] = admin.id
+    session[:current_admin_id] = admin.id.to_s
     session[:current_admin_token] = admin.password_digest
   end
 

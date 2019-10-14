@@ -1,5 +1,8 @@
 module ApplicationHelper
   # Generate `{controller}-{action}-page` class for body element
+  #
+  puts "ApplicationHelper Loaded"
+
   def body_class
     path = controller_path.tr('/_', '-')
     action_name_map = {
@@ -42,27 +45,6 @@ module ApplicationHelper
     when 'warning' then 'alert alert-warning alert-dismissible'
     when 'alert', 'error' then 'alert alert-danger alert-dismissible'
     end
-  end
-
-  class HTMLwithCodeRay < Redcarpet::Render::HTML
-    def block_code(code, language)
-      CodeRay.scan(code, language).div(:tab_width=>2)
-    end
-  end
-
-  def markdown(text)
-    options = {
-        autolink: true,
-        space_after_headers: true,
-        fenced_code_blocks: true,
-        no_intra_emphasis: true,
-        hard_wrap: true,
-        strikethrough: true,
-        highlight: true,
-        quote: true
-    }
-    markdown = Redcarpet::Markdown.new(HTMLwithCodeRay,options)
-    markdown.render(h(text)).html_safe
   end
 
 end

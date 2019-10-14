@@ -10,6 +10,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'hiredis'
+gem 'fastdfs-client'
 # gem 'redcarpet'
 # gem 'coderay'
 
@@ -31,7 +32,9 @@ group :test do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'mysql2'
+# gem 'mysql2'
+gem 'mongoid'
+
 gem 'figaro'
 gem 'simple_form', ">= 5.0.0"
 gem 'slim-rails'
