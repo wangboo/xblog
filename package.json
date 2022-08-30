@@ -13,7 +13,7 @@
     "daterangepicker": "^3.0.5",
     "expose-loader": "^0.7.5",
     "jquery": "^3.3.1",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "popper.js": "^1.14.7",
     "rails-erb-loader": "^5.5.2",
     "tempusdominus-core": "^5.0.3",
